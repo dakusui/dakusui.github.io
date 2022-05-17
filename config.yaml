@@ -3,6 +3,7 @@ baseURL: https://dakusui.github.io
 languageCode: en-us
 title: "Hiroshi Ukai's blog"
 theme: "toha"
+publishDir : "docs"
 
 security:
   exec:

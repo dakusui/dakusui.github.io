@@ -1,0 +1,2 @@
+Created based on: https://github.com/hugo-toha/toha
+Next step: https://toha-guides.netlify.app/posts/getting-started/prepare-site/

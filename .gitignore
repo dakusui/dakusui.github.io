@@ -1,5 +1,6 @@
 target/
 resources/
+public/
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -11,5 +12,5 @@ buildNumber.properties
 *~
 .gitignore~
 public/
-./.hugo_build.lock
+.hugo_build.lock
 .DS_Store
