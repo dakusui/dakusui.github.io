@@ -6,16 +6,14 @@
     <description>Recent content in Posts on Hiroshi Ukai&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 May 2022 13:39:42 +0900</lastBuildDate><atom:link href="https://dakusui.github.io/posts/index.xml" rel="self" type="application/rss+xml" /><item>
-      <title>Hello</title>
-      <link>https://dakusui.github.io/posts/hello/</link>
-      <pubDate>Tue, 17 May 2022 13:39:42 +0900</pubDate>
+    <lastBuildDate>Tue, 17 May 2022 18:42:24 +0900</lastBuildDate><atom:link href="https://dakusui.github.io/posts/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>First Post</title>
+      <link>https://dakusui.github.io/posts/first-post/</link>
+      <pubDate>Tue, 17 May 2022 18:42:24 +0900</pubDate>
       
-      <guid>https://dakusui.github.io/posts/hello/</guid>
-      <description>Hello, world! I am tryin asciidoc on hugo. Does it work right?
- Hello world! public class Hello { public static void main(String... args) { System.out.println(&amp;#34;Hello, world&amp;#34;); } }   Seems working? Nice!
- Does asciidoctorj work? → No…​
- +-----+ |Hello| +-----+   </description>
+      <guid>https://dakusui.github.io/posts/first-post/</guid>
+      <description>This is my first post on this my new blog. Let me try the asciidoctor’s source feature.
+ public class Hello { public static void main(String... args) { System.out.println(&amp;#34;Hello, world&amp;#34;); } }   </description>
     </item>
     
     
