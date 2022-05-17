@@ -6,15 +6,19 @@ greeting: "Hi, I am"
 image: "images/author/avatar.jpg"
 # give your some contact information. they will be used in the footer
 contactInfo:
-  email: "johndoe@example.com"
-  phone: "+0123456789"
-  github: johndoe
-  linkedin: johndoe
+  # email: "johndoe@example.com"
+  github: dakusui
+  # linkedin: johndoe
+  twitter: "@______HU"
+  
 
 # some summary about what you do
 summary:
-  - I am a Developer
-  - I am a Devops
-  - I love servers
-  - I work on open-source projects
-  - I love to work with some fun projects
+  - I am a Software Engineer,
+  - ...specializing at Automated Verification Framework.
+  - I am an author of JCUnit,
+  - ...the first Model-based testing tool powered by "combinatorial testing" ideas.
+  - I am an author of pcond library,
+  - ...a testing assertion library that is also useful for DbC programming with zero-overhead.
+  - An inventor.
+  - Doctor of Engineering.

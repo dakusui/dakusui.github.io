@@ -21,44 +21,53 @@ buttons:
 
 # your projects
 projects:
-- name: Kubernetes
-  logo: /images/sections/projects/kubernetes.png
-  role: Contributor
-  timeline: "March 2018 - Present"
-  repo: https://github.com/kubernetes/kubernetes # If your project is a public repo on GitHub, then provide this link. it will show star count.
-  #url: ""  # If your project is not a public repo but it has a website or any external details url then provide it here. don't provide "repo" and "url" simultaneously.
-  summary: Production-Grade Container Scheduling and Management.
-  tags: ["professional", "kubernetes", "cloud"]
+- name: JCUnit
+  logo: /images/sections/projects/jcunit.png
+  role: Author
+  timeline: "March 2015 - Present"
+  repo: https://github.com/dakusui/jcunit
+  #url: ""  # If your project is not a public repo but it has a website or any external
+            # details url then provide it here. don't provide "repo" and "url" simultaneously.
+  summary: Model-based testing tool powered by Combinatoril Interaction Testing concepts.
+  tags: ["professional", "academic", "combinatorial interaction testing", "java", "unit testing", "junit"]
 
-- name: Tensorflow
-  logo: /images/sections/projects/tensorflow.png
-  role: Developer
-  timeline: "Jun 2018 - Present"
-  repo: https://github.com/tensorflow/tensorflow
-  #url: ""
-  summary: An Open Source Machine Learning Framework for Everyone.
-  tags: ["professional", "machine-learning"]
-
-- name: A sample academic paper
-  role: Team Lead
-  timeline: "Jan 2017 - Nov 2017"
-  url: "https://www.example.com"
-  summary: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente eius reprehenderit animi suscipit autem eligendi esse amet aliquid error eum. Accusantium distinctio soluta aliquid quas placeat modi suscipit eligendi nisi.
-  tags: ["academic","iot"]
-
-- name: Nocode
-  logo: /images/sections/projects/no-code.png
-  role: Nothing
-  timeline: "Oct 2019 - Dec 2019"
-  repo: https://github.com/kelseyhightower/nocode
-  #url: ""
-  summary: The best way to write secure and reliable applications. Write nothing; deploy nowhere.
-  tags: ["hobby", "fun"]
-
-- name: Toha
-  logo: /images/sections/projects/toha.png
-  role: Owner
+- name: jq-front
+  logo: /images/sections/projects/jq-front.png
+  role: Author
   timeline: "Jun 2019 - Present"
-  repo: https://github.com/hossainemruz/toha
-  summary: A Hugo theme for personal portfolio.
-  tags: ["hobby","hugo","theme","professional"]
+  #repo: https://github.com/tensorflow/tensorflow
+  url: https://dakusui.github.io/jq-front
+  summary: A JSON (YAML) processor with inheritance and templating. Extremely useful for designing configuration files.
+  tags: ["professional", "JSON", "bash"]
+
+# - name: A sample academic paper
+#  role: Team Lead
+#  timeline: "Jan 2017 - Nov 2017"
+#  url: "https://www.example.com"
+#  summary: Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente eius reprehenderit animi suscipit autem eligendi esse amet aliquid error eum. Accusantium distinctio soluta aliquid quas placeat modi suscipit eligendi nisi.
+#  tags: ["academic","iot"]
+
+- name: pcond
+  logo: /images/sections/projects/pcond.png
+  role: Author
+  timeline: "2020 - Present"
+  repo: https://github.com/dakusui/pcond
+  #url: ""
+  summary: A composable, extendable, multi-purposed assertion library. Designed to be zero-overhead as DbC assertions.
+  tags: ["professional", "functional programming", "Design by Contract", "java"]
+
+- name: symfonion
+  logo: /images/sections/projects/symfonion.png
+  role: Author
+  timeline: "Jun 2013 - Present"
+  repo: https://github.com/dakusui/symfonion
+  summary: A JSON-based music macro language processor written in Java. Old design, but a fun thing.
+  tags: ["hobby","fun","music", "java", "json"]
+
+- name: osynth
+  logo: /images/sections/projects/osynth.png
+  role: Author
+  timeline: "Jun 2020 - Present"
+  repo: https://github.com/dakusui/osynth
+  summary: A library to "synthesize" an object without consturcting. Allows you to reuse and modify behaiviors of an object, not a class. Under development.
+  tags: ["professional","meta-programming","aspect oriented programming", "java"]
