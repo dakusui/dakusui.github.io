@@ -1,0 +1,15 @@
+---
+title: "Second Post"
+date: 2022-05-17T19:34:01+09:00
+draft: false
+---
+
+Then trying ditaa, which wouldn't be working with hugo.
+
+[ditaa]
+----
++-----+
+|hello|
++-----+
+----
+
