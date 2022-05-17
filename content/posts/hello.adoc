@@ -1,0 +1,24 @@
+---
+title: "Hello"
+date: 2022-05-17T13:39:42+09:00
+draft: true
+---
+
+Hello, world!
+I am tryin asciidoc on hugo.
+Does it work right?
+
+[source, java]
+.Hello world!
+----
+public class Hello {
+  public static void main(String... args) {
+    System.out.println("Hello, world");
+  }
+}
+----
+
+Seems working?
+Nice!
+
+
