@@ -1,7 +1,7 @@
 ---
 title: "About Assertions 1"
 date: 2022-05-31T04:39:15+09:00
-draft: true
+draft: false
 ---
 
 When I write a test with JUnit, etc., I always feel annoyed at not being able to make it clean or doing so is really difficult.
