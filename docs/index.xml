@@ -6,7 +6,19 @@
     <description>Recent content on Hiroshi Ukai&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 May 2022 19:34:01 +0900</lastBuildDate><atom:link href="https://dakusui.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+    <lastBuildDate>Tue, 31 May 2022 04:39:15 +0900</lastBuildDate><atom:link href="https://dakusui.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>About Assertions 1</title>
+      <link>https://dakusui.github.io/posts/about-assertions-1/</link>
+      <pubDate>Tue, 31 May 2022 04:39:15 +0900</pubDate>
+      
+      <guid>https://dakusui.github.io/posts/about-assertions-1/</guid>
+      <description>When I write a test with JUnit, etc., I always feel annoyed at not being able to make it clean or doing so is really difficult. Let me state here, my principles in coding.
+  &amp;#34;Repetitive things are machine’s, not human’s&amp;#34;
+  &amp;#34;Tests are also codes. They should be as clean as the product&amp;#34;
+   Perhaps, I need to add some other new principles to them later as my thought develops through posting entries to this blog, but anyway, I am going to call the set of my ideas that I am presenting here, &amp;#34;Test Design as Code&amp;#34;.</description>
+    </item>
+    
+    <item>
       <title>Second Post</title>
       <link>https://dakusui.github.io/posts/second-post/</link>
       <pubDate>Tue, 17 May 2022 19:34:01 +0900</pubDate>
