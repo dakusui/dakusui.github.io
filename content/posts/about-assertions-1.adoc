@@ -1,0 +1,84 @@
+---
+title: "About Assertions 1"
+date: 2022-05-31T04:39:15+09:00
+draft: true
+---
+
+When I write a test with JUnit, etc., I always feel annoyed at not being able to make it clean or doing so is really difficult.
+Let me state here, my principles in coding.
+
+1. "Repetitive things are machine's, not human's"
+2. "Tests are also codes. They should be as clean as the product"
+
+Perhaps, I need to add some other new principles to them later as my thought develops through posting entries to this blog, but anyway, I am going to call the set of my ideas that I am presenting here, **"Test Design as Code"**.
+
+Actually, it is already five years ago since I first used the word for my article: "JCUnit: Test Design as Code"<<JCUNIT>>.
+The situation has not changed from the time, that much.
+I am still seeing the lack of fundamental tools and key ideas to achieve or even identifying challenges to achieve the goals I mentioned earlier.
+
+For this first post, I'd pick up "assertion"'s history.
+It would be an appropriate topic because many people are familiar with it, and it is a fundamental thing in automated testing.
+Therefore, it would be a useful example for illustrating that there are a lot of "missing" things in the area of automated testing.
+
+== Assertion in Automated Tests (JUnit)
+
+It is almost a quarter-century since Martin Fowler and Kent Beck have published the book "Refactoring"<<REFACTORING>> and the JUnit library has become popular.
+The idea of an "assertion" was already there.
+It was implemented as a simple Java method `assert` in `TestCase` class, which a test writer should extend.
+Don't get surprised, the keyword `assert` used not to be a reserved word at the time.
+But, the behavior is not that much different.
+If the condition becomes `false`, it throws an exception and the program will get aborted at the line.
+
+The first JUnit-based test method in the book was like following.
+Please note that, to the examples I added enclosing classes to make them readable and also added notes for explanation.
+
+[source, java]
+----
+class FileReaderTest extends TestCase {
+  public void testRead() throws IOException {
+    char ch = '&';
+    for (int i = 0; i < 4; i++) {
+      ch = (char) _input.read();
+    }
+    assert('d' == ch);
+  }
+}
+----
+
+This test is verifies if the forth character from `_input` is `d` (In the `setUp` step in this class, the field `_input` is designed so).
+
+Along with the explanation about how to write (grow) automated tests, it evolves into a new test.
+
+[source, java]
+----
+class FileReaderTest extends TestCase {
+  public void testReadBoundaries() throws IOException {
+    assertEquals("read first char", 'B', _input.read());  // <1>
+    for (int i = 1; i < 140; i++) {
+      ch = (char) _input.read();
+    }
+    assertEquals("read last char", '6', _input.read());   // <2>
+    assertEquals("read at end", -1, _input.read());       // <3>
+  }
+}
+----
+By using a new method `assertEquals`, without going back to the source code, we can now tell how the `_input` showed different behavior from the expectation on a failure.
+
+Since the software under test is a simple class which only reads a stream of characters from a file, it is not likely, but in general case, we should take the following situation into consideration.
+We may introduce a bug that breaks all the assertions.
+We will fix (1), then run and find (2) is broken, and then run and find (3) is broken...
+
+We can do even worse.
+Suppose we introduce a bug that breaks (3).
+We tried to fix it, but it actually broke (1).
+You can imagine how much it is frustrating.
+
+== Next Post
+
+In the next post, I will be touching up on the first popular matcher library "hamcrest".
+
+
+== References
+
+- [[JCUNIT]] https://ieeexplore.ieee.org/document/7928008[JCUnit], H. Ukai and X. Qu, "Test Design as Code: JCUnit," 2017 IEEE International Conference on Software Testing, Verification and Validation (ICST), 2017, pp. 508-515, doi: 10.1109/ICST.2017.58.
+- [[REFACTORING]] https://www.amazon.co.jp/-/en/Martin-Opdyke-William-Roberts-Fowler/dp/0201485672[Refactoring] "Refactoring: Improving the Design of Existing Code" (Addison-wesley Object Technology Series) Hardcover – June 28, 1999

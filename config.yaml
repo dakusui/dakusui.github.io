@@ -150,7 +150,7 @@ params:
     #     backgroundColor: '#248aaa'
 
   # specify whether you want to show Table of Contents in reading page
-  enableTOC: true
+  enableTOC: false
 
   # Show tags under the post title
   enableTags: true
