@@ -76,7 +76,7 @@ At the same time, the report is saying that `theBiscuit` was, in `Actual`, `Ging
 Making both the code and the report readable in the way they are connected is an extra requirement for test codes that product codes don't have.
 Unless otherwise, don't you want to modify your test code rather than your product code in order to make your failing test?
 Of course, you answer no.
-But I have seen too many engineer who does actually does it.
+But I have seen too many engineers who actually do it.
 A human is such a thing.
 
 == Next Post: Did the Hamcrest conclude how the assertion should be?
