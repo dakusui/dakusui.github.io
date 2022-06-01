@@ -1,0 +1,94 @@
+---
+title: "About Assertions 2"
+date: 2022-05-31T05:08:09+09:00
+draft: true
+---
+
+Then the "Hamcrest" comes.
+It was the first and only library bundled with the JUnit (not anymore with JUnit5).
+As we saw in the previous post, the assertion capability was a part of the testing framework library until JUnit 3's age.
+
+From the age of the book "Refactoring", how to describe a failure was a concern, only checking if a condition `true` or not wasn't sufficient from the beginning.
+"How" it was not satisfied matters.
+That is why even the earliest version of JUnit had a method `assertEquals`, not only the simplest `assert` method footnote:[This is not a mistake. `assert` became a reserved word in version 1.4. of Java].
+
+However, how should we express a failure, when a test fails?
+Isn't it a subjective to decide what expressions are good to describe failures?
+Wouldn't it be a significant task to implement it, even if we can reach some agreement?
+Don't we notice that we keep writing similar `assertXyz` methods over and over again?
+
+Then, the Hamcrest came.
+
+== Hamcrest's style
+
+Hamcrest is a java library, which does "assertions" in the unit testing context.
+Why I explicitly stated "unit testing context"?
+I will touch upon it in a separate blog post.
+
+Using the hamcrest, the simplest assertion can be like following.
+
+[source,java]
+----
+import org.junit.jupiter.api.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
+public class BiscuitTest {
+  @Test
+  public void testEquals() {
+    Biscuit theBiscuit = new Biscuit("Ginger");
+    Biscuit myBiscuit = new Biscuit("Butter");
+    assertThat(theBiscuit, equalTo(myBiscuit));
+  }
+}
+----
+
+This is a code snippet I borrowed from http://hamcrest.org/JavaHamcrest/tutorial[their site] and modified to make it fail intentionally.
+
+It prints something like following (If the `toString` method is nicely overridden in the `BistuitTest` class).
+
+----
+java.lang.AssertionError:
+Expected: <Butter>
+     but: was <Ginger>
+Expected :<Butter>
+Actual   :<Ginger>
+----
+
+This is quite nice and not only that, Hamcrest has similar methods for a handful popular classes.
+With that you can build a readable test code that generates a readable report on a failure.
+
+This might be one important point, when you think of the difficulty automated verification.
+Unlike predicates in the product codes, we need to mind the readability of a report produced on a failure, not only the code itself.
+Not only that, how the report will look like should be connected directly with how the code looks like as much as possible.
+
+In the example above, please note that the line,
+
+----
+    assertThat(theBiscuit, equalTo(myBiscuit));
+----
+
+is almost directly expressing how `theBiscuit` should be asserted.
+That is, `theBisbuit` should be `equalTo(myBiscuit)`.
+
+At the same time, the report is saying that `theBiscuit` was, in `Actual`, `Ginger`, while it was expected to be `Butter` (`myBiscuit`).
+
+Making both the code and the report readable in the way they are connected is an extra requirement for test codes that product codes don't have.
+Unless otherwise, don't you want to modify your test code rather than your product code in order to make your failing test?
+Of course, you answer no.
+But I have seen too many engineer who does actually does it.
+A human is such a thing.
+
+== Next Post: Did the Hamcrest conclude how the assertion should be?
+
+Not, actually.
+Like any other products, Hamcrest has its own challenges.
+Like any other successful products, it opened new challenges visible.
+In relatively recent years, a few new assertion library are becoming popular.
+They are trying to become solutions to it.
+`FluentJ` and `Google Truth`, which will be discussed in the next post.
+
+== References
+
+- [[Hamcrest]] http://hamcrest.org/[Hamcrest], hamcrest.org, "Hamcrest, Matchers that can be combined to create flexible expressions of intent"
+
