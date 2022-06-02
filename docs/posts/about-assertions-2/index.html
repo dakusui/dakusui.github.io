@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>About Assertions 2</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+<link rel="stylesheet" href="/css/plyr.css"/>
+<link rel="stylesheet" href="/css/flag-icon.min.css"/>
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600">
+
+
+<link rel="stylesheet" href="/fontawesome/css/all.min.css"/>
+
+
+
+
+  
+
+  
+  
+  
+    
+  
+  
+
+  <link rel="icon" type="image/png" href="/images/site/favicon_hub02d7508a1c89b2b7812eab204efeb9a_4223_42x0_resize_box_3.png" />
+
+<meta property="og:title" content="About Assertions 2" />
+<meta property="og:description" content="Then the &#34;Hamcrest&#34; comes. It was the first and only library bundled with the JUnit (not anymore with JUnit5). As we saw in the previous post, the assertion capability was a part of the testing framework library until JUnit 3’s age.
+ From the age of the book &#34;Refactoring&#34;, how to describe a failure was a concern, only checking if a condition true or not wasn’t sufficient from the beginning. &#34;How&#34; it was not satisfied matters." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://dakusui.github.io/posts/about-assertions-2/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-31T05:08:09+09:00" />
+<meta property="article:modified_time" content="2022-05-31T05:08:09+09:00" />
+
+
+
+    
+    
+<meta name="description" content="About Assertions 2" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+
+
+    
+
+
+
+
+</head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+  
+  
+    
+  
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      
+        <img src="/images/site/main-logo_hu9ad2f25a877e6fef77c7a3dbef5094ad_6881_42x0_resize_box_3.png" alt="Logo">
+      Hiroshi Ukai&#39;s blog</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  
+    <img src="/images/site/main-logo_hu9ad2f25a877e6fef77c7a3dbef5094ad_6881_42x0_resize_box_3.png" class="d-none" id="main-logo" alt="Logo">
+  
+  
+    <img src="/images/site/inverted-logo_hub02d7508a1c89b2b7812eab204efeb9a_4223_42x0_resize_box_3.png" class="d-none" id="inverted-logo" alt="Inverted Logo">
+  
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <form class="mx-auto" method="get" action="/search">
+          <input type="text" name="keyword" value="" placeholder="Search" data-search="" id="search-box" />
+        </form>
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://dakusui.github.io/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/avatar_hu700675a3593f2196f90a24bec185a055_32468_120x120_fit_q75_box.jpg' alt="Author Image">
+          <h5 class="author-name">Hiroshi Ukai</h5>
+          <p>Tuesday, May 31, 2022</p>
+        </div>
+
+        <div class="title">
+          <h1>About Assertions 2</h1>
+        </div>
+        
+        <div class="taxonomy-terms">
+            <ul>
+            
+          </ul>
+        </div>
+        
+        <div class="post-content" id="post-content">
+          <div class="paragraph">
+<p>Then the &#34;Hamcrest&#34; comes.
+It was the first and only library bundled with the JUnit (not anymore with JUnit5).
+As we saw in the previous post, the assertion capability was a part of the testing framework library until JUnit 3’s age.</p>
+</div>
+<div class="paragraph">
+<p>From the age of the book &#34;Refactoring&#34;, how to describe a failure was a concern, only checking if a condition <code>true</code> or not wasn’t sufficient from the beginning.
+&#34;How&#34; it was not satisfied matters.
+That is why even the earliest version of JUnit had a method <code>assertEquals</code>, not only the simplest <code>assert</code> method <sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnotedef_1" title="View footnote.">1</a>]</sup>.</p>
+</div>
+<div class="paragraph">
+<p>However, how should we express a failure, when a test fails?
+Isn’t it a subjective to decide what expressions are good to describe failures?
+Wouldn’t it be a significant task to implement it, even if we can reach some agreement?
+Don’t we notice that we keep writing similar <code>assertXyz</code> methods over and over again?</p>
+</div>
+<div class="paragraph">
+<p>Then, the Hamcrest came.</p>
+</div>
+<div class="sect1">
+<h2 id="_hamcrests_style">Hamcrest’s style</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Hamcrest is a java library, which does &#34;assertions&#34; in the unit testing context.
+Why I explicitly stated &#34;unit testing context&#34;?
+I will touch upon it in a separate blog post.</p>
+</div>
+<div class="paragraph">
+<p>Using the hamcrest, the simplest assertion can be like following.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">import org.junit.jupiter.api.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
+public class BiscuitTest {
+  @Test
+  public void testEquals() {
+    Biscuit theBiscuit = new Biscuit(&#34;Ginger&#34;);
+    Biscuit myBiscuit = new Biscuit(&#34;Butter&#34;);
+    assertThat(theBiscuit, equalTo(myBiscuit));
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is a code snippet I borrowed from <a href="http://hamcrest.org/JavaHamcrest/tutorial">their site</a> and modified to make it fail intentionally.</p>
+</div>
+<div class="paragraph">
+<p>It prints something like following (If the <code>toString</code> method is nicely overridden in the <code>BistuitTest</code> class).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>java.lang.AssertionError:
+Expected: &lt;Butter&gt;
+     but: was &lt;Ginger&gt;
+Expected :&lt;Butter&gt;
+Actual   :&lt;Ginger&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is quite nice and not only that, Hamcrest has similar methods for a handful popular classes.
+With that you can build a readable test code that generates a readable report on a failure.</p>
+</div>
+<div class="paragraph">
+<p>This might be one important point, when you think of the difficulty automated verification.
+Unlike predicates in the product codes, we need to mind the readability of a report produced on a failure, not only the code itself.
+Not only that, how the report will look like should be connected directly with how the code looks like as much as possible.</p>
+</div>
+<div class="paragraph">
+<p>In the example above, please note that the line:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    assertThat(theBiscuit, equalTo(myBiscuit));</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is almost directly expressing how <code>theBiscuit</code> should be asserted.
+That is, <code>theBisbuit</code> should be <code>equalTo(myBiscuit)</code>.</p>
+</div>
+<div class="paragraph">
+<p>At the same time, the report is saying that <code>theBiscuit</code> was, in <code>Actual</code>, <code>Ginger</code>, while it was expected to be <code>Butter</code> (<code>myBiscuit</code>).</p>
+</div>
+<div class="paragraph">
+<p>Making both the code and the report readable in the way they are connected.
+This is an extra and important requirement for test codes that product codes don’t have.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_next_post_about_allof_matcher">Next Post: About <code>AllOf</code> matcher</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the previous post, I mentioned a painful situation, where we need to repeat run, fail, fix, run, fail, fix loop.
+The next post will discuss <code>AllOf</code> matcher, which addresses this pain.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_references">References</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a id="Hamcrest"></a> <a href="http://hamcrest.org/">Hamcrest</a>, hamcrest.org, &#34;Hamcrest, Matchers that can be combined to create flexible expressions of intent&#34;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr/>
+<div class="footnote" id="_footnotedef_1">
+<a href="#_footnoteref_1">1</a>. This is not a mistake. <code>assert</code> became a reserved word in version 1.4. of Java
+</div>
+</div>
+
+        </div>
+
+        
+        <div class="row pl-3 pr-3">
+        
+        <div class="col-md-6 share-buttons">
+        
+            <strong>Share on:</strong>
+            
+            <a class="btn btn-sm facebook-btn" href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fdakusui.github.io%2fposts%2fabout-assertions-2%2f" target="_blank">
+              <i class="fab fa-facebook"></i>
+            </a>
+            
+            
+                <a class="btn btn-sm twitter-btn" href="https://twitter.com/share?url=https%3a%2f%2fdakusui.github.io%2fposts%2fabout-assertions-2%2f&text=About%20Assertions%202&via=Hiroshi%20Ukai%27s%20blog" target="_blank">
+                  <i class="fab fa-twitter"></i>
+                </a>
+            
+            
+            
+            
+            
+            
+             
+            
+            
+          
+          </div>
+
+        
+        
+          
+            
+          
+          <div class="col-md-6 btn-improve-page">
+             
+               <a href="https://github.com/dakusui/dakusui.github.io/edit/toha/content/posts/about-assertions-2.adoc" title="Improve this page" target="_blank" rel="noopener">
+            
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+        </div>
+
+
+
+      
+      <hr />
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row next-prev-navigator">
+  
+  
+</div>
+
+      <hr />
+
+      
+      
+
+      
+      
+
+      </div>
+    </div>
+  </div>
+  
+  <a id="scroll-to-top" class="btn"><i class="fas fa-chevron-circle-up"></i></a>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+  </section>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+    
+    
+      
+    
+  
+
+
+  
+  
+  
+    
+  
+
+  
+  
+  
+
+  
+  
+  
+    
+  
+  
+
+  
+  
+  
+
+  <footer id="footer" class="container-fluid text-center align-content-center footer pb-2">
+    <div class="container pt-5">
+      <div class="row text-left">
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Navigation</h5>
+          
+          <ul>
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://dakusui.github.io#about">About</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://dakusui.github.io#projects">Projects</a>
+                </li>
+              
+              
+                
+                
+                  
+                
+                <li class="nav-item">
+                  <a class="smooth-scroll" href="https://dakusui.github.io#recent-posts">Recent Posts</a>
+                </li>
+              
+            
+              
+            
+          </ul>
+          
+        </div>
+        
+        
+        <div class="col-md-4 col-sm-12">
+          <h5>Contact me:</h5>
+          <ul>
+            
+              
+                <li><a href=https://github.com/dakusui target="_blank" rel="noopener">
+                  <span><i class="fab fa-github"></i></span> <span>dakusui</span>
+                </a></li>
+              
+            
+              
+                <li><span>Twitter: </span> <span>@______HU</span></li>
+              
+            
+          </ul>
+        </div>
+        
+        
+        
+          
+          <div class="col-md-4 col-sm-12">
+            <p>Stay up to date with email notification</p>
+            
+              <form method='post' action='https://blogtrottr.com'>
+              <div class="form-group">
+              <input type='email' class="form-control" name='btr_email' placeholder="Enter email"/><br />
+              <input type='hidden' name='btr_url' value='https://dakusui.github.ioindex.xml' />
+              <input type='hidden' name='schedule_type' value='1' />
+              <small id="emailHelp" class="form-text text-muted">By entering your email address, you agree to receive the newsletter of this website.</small>
+              <button type="submit" class="btn btn-info"> Submit </button>
+              </div>
+              </form>
+            
+          </div>
+        
+      </div>
+    </div>
+    
+    <hr />
+    <div class="container">
+      <p id="disclaimer"><strong>Liability Notice:</strong> This theme is under MIT license. So, you can use it for non-commercial, commercial, or private uses. You can modify or distribute the theme without requiring any permission from the theme author. However, the theme author does not provide any warranty or takes any liability for any issue with the theme.</p>
+    </div>
+    
+    
+    <hr />
+    <div class="container">
+      <div class="row text-left">
+        <div class="col-md-4">
+          <a id="theme" href="https://github.com/hossainemruz/toha" target="_blank" rel="noopener">
+            <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_3.png" alt="Toha Theme Logo">
+            Toha
+          </a>
+        </div>
+        <div class="col-md-4 text-center">© 2022 Copyright.</div>
+        <div class="col-md-4 text-right">
+          <a id="hugo" href="https://gohugo.io/" target="_blank" rel="noopener">Powered by
+          <img
+            src="/images/hugo-logo.svg"
+            alt="Hugo Logo"
+            height="18"
+          />
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="/js/navbar.js"></script>
+<script type="text/javascript" src="/js/plyr.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

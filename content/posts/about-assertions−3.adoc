@@ -1,0 +1,14 @@
+---
+title: "About Assertions−3"
+date: 2022-06-03T01:31:09+09:00
+draft: true
+---
+
+== Next Post: Did the Hamcrest conclude how the assertion should be?
+
+Not, actually.
+Like any other products, Hamcrest has its own challenges.
+Like any other successful products, it made the next challenges visible.
+In relatively recent years, a few new assertion library are becoming popular.
+They are trying to become solutions to it.
+`FluentJ` and `Google Truth`, which will be discussed in the next post.

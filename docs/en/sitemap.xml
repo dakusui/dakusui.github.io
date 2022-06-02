@@ -102,11 +102,11 @@
     <lastmod>2010-06-08T08:06:25+06:00</lastmod>
     <priority>0.1</priority>
   </url><url>
-    <loc>https://dakusui.github.io/posts/about-assertions-1/</loc>
-    <lastmod>2022-05-31T04:39:15+09:00</lastmod>
+    <loc>https://dakusui.github.io/posts/about-assertions-2/</loc>
+    <lastmod>2022-05-31T05:08:09+09:00</lastmod>
   </url><url>
     <loc>https://dakusui.github.io/</loc>
-    <lastmod>2022-05-31T04:39:15+09:00</lastmod>
+    <lastmod>2022-05-31T05:08:09+09:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
@@ -119,6 +119,9 @@
                 />
   </url><url>
     <loc>https://dakusui.github.io/posts/</loc>
+    <lastmod>2022-05-31T05:08:09+09:00</lastmod>
+  </url><url>
+    <loc>https://dakusui.github.io/posts/about-assertions-1/</loc>
     <lastmod>2022-05-31T04:39:15+09:00</lastmod>
   </url><url>
     <loc>https://dakusui.github.io/posts/second-post/</loc>

@@ -1,7 +1,7 @@
 ---
 title: "About Assertions 2"
 date: 2022-05-31T05:08:09+09:00
-draft: true
+draft: false
 ---
 
 Then the "Hamcrest" comes.
@@ -62,31 +62,24 @@ This might be one important point, when you think of the difficulty automated ve
 Unlike predicates in the product codes, we need to mind the readability of a report produced on a failure, not only the code itself.
 Not only that, how the report will look like should be connected directly with how the code looks like as much as possible.
 
-In the example above, please note that the line,
+In the example above, please note that the line:
 
 ----
     assertThat(theBiscuit, equalTo(myBiscuit));
 ----
 
-is almost directly expressing how `theBiscuit` should be asserted.
+This is almost directly expressing how `theBiscuit` should be asserted.
 That is, `theBisbuit` should be `equalTo(myBiscuit)`.
 
 At the same time, the report is saying that `theBiscuit` was, in `Actual`, `Ginger`, while it was expected to be `Butter` (`myBiscuit`).
 
-Making both the code and the report readable in the way they are connected is an extra requirement for test codes that product codes don't have.
-Unless otherwise, don't you want to modify your test code rather than your product code in order to make your failing test?
-Of course, you answer no.
-But I have seen too many engineers who actually do it.
-A human is such a thing.
+Making both the code and the report readable in the way they are connected.
+This is an extra and important requirement for test codes that product codes don't have.
 
-== Next Post: Did the Hamcrest conclude how the assertion should be?
+== Next Post: About `AllOf` matcher
 
-Not, actually.
-Like any other products, Hamcrest has its own challenges.
-Like any other successful products, it opened new challenges visible.
-In relatively recent years, a few new assertion library are becoming popular.
-They are trying to become solutions to it.
-`FluentJ` and `Google Truth`, which will be discussed in the next post.
+In the previous post, I mentioned a painful situation, where we need to repeat run, fail, fix, run, fail, fix loop.
+The next post will discuss `AllOf` matcher, which addresses this pain.
 
 == References
 
