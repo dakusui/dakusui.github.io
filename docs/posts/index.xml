@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Hiroshi Ukai&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 31 May 2022 05:08:09 +0900</lastBuildDate><atom:link href="https://dakusui.github.io/posts/index.xml" rel="self" type="application/rss+xml" /><item>
+    <lastBuildDate>Fri, 03 Jun 2022 01:31:09 +0900</lastBuildDate><atom:link href="https://dakusui.github.io/posts/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>About Assertions−3</title>
+      <link>https://dakusui.github.io/posts/about-assertions3/</link>
+      <pubDate>Fri, 03 Jun 2022 01:31:09 +0900</pubDate>
+      
+      <guid>https://dakusui.github.io/posts/about-assertions3/</guid>
+      <description>I mentioned a situation, where we need to repeat fix, run, fix run…​ steps. It happens when we want to make sure multiple conditions are satisfied at the same time in a single test run.
+ public class MultiConditions { @Test public void multiConditions() { String firstName = &amp;#34;Gaius&amp;#34;; String lastName = &amp;#34;Caesar&amp;#34;; String helloMessage = composeHelloMessageInEnglish(firstName, lastName); assertThat(helloMessage, containsString(&amp;#34;Hello&amp;#34;)); assertThat(helloMessage, containsString(&amp;#34;Gaius&amp;#34;)); assertThat(helloMessage, containsString(&amp;#34;CAESAR&amp;#34;)); } }   Let’s suppose that we introduced bugs in the method composeHelloMessageInEnglish(String,String), where we inserted &amp;#34;Howdy&amp;#34;, instead of &amp;#34;Hello&amp;#34; and at the same time, we forgot making family name all upper cases despite its specification of the function.</description>
+    </item>
+    
+    <item>
       <title>About Assertions 2</title>
       <link>https://dakusui.github.io/posts/about-assertions-2/</link>
       <pubDate>Tue, 31 May 2022 05:08:09 +0900</pubDate>

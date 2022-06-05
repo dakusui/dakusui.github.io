@@ -156,6 +156,32 @@
       
         
           <div class="post-card">
+  <a href="/posts/about-assertions3/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">About Assertions−3</h5>
+        <p class="card-text post-summary">I mentioned a situation, where we need to repeat fix, run, fix run…​ steps. It happens when we want to make sure multiple conditions are satisfied at the same time in a single test run.
+ public class MultiConditions { @Test public void multiConditions() { String firstName = &#34;Gaius&#34;; String lastName = &#34;Caesar&#34;; String helloMessage = composeHelloMessageInEnglish(firstName, lastName); assertThat(helloMessage, containsString(&#34;Hello&#34;)); assertThat(helloMessage, containsString(&#34;Gaius&#34;)); assertThat(helloMessage, containsString(&#34;CAESAR&#34;)); } }   Let’s suppose that we introduced bugs in the method composeHelloMessageInEnglish(String,String), where we inserted &#34;Howdy&#34;, instead of &#34;Hello&#34; and at the same time, we forgot making family name all upper cases despite its specification of the function.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">June 3, 2022</span>
+        <a
+        href="/posts/about-assertions3/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
   <a href="/posts/about-assertions-2/" class="post-card-link">
     <div class="card">
       <div class="card-head">
