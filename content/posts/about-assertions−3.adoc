@@ -1,14 +1,77 @@
 ---
 title: "About Assertions−3"
 date: 2022-06-03T01:31:09+09:00
-draft: true
+draft: false
 ---
+
+I mentioned a situation, where we need to repeat fix, run, fix run... steps.
+It happens when we want to make sure multiple conditions are satisfied at the same time in a single test run.
+
+[source,java]
+----
+public class MultiConditions {
+  @Test
+  public void multiConditions() {
+    String firstName = "Gaius";
+    String lastName = "Caesar";
+    String helloMessage = composeHelloMessageInEnglish(firstName, lastName);
+
+    assertThat(helloMessage, containsString("Hello"));
+    assertThat(helloMessage, containsString("Gaius"));
+    assertThat(helloMessage, containsString("CAESAR"));
+  }
+}
+----
+
+Let's suppose that we introduced bugs in the method `composeHelloMessageInEnglish(String,String)`, where we inserted "Howdy", instead of "Hello" and at the same time, we forgot making family name all upper cases despite its specification of the function.
+
+We first need to run the test and know the salute is broken.
+Fix it and run.
+Then we'll know also we forgot making the family name upper cases.
+Then run it again and now the test passes.
+
+In this example, the function was quite easy and perhaps very fast, which is always not the case.
+If it takes 5-10 min, wouldn't it be too much painful?
+We can say dogmatically that "a unit test suite must be designed so that it finishes within 10 seconds."
+But, it's no use.
+Not having tests is much worse thing than having no tests.
+Also, in reality, there are a lot of scenes we need to handle very time-consuming functions.
+
+A better way of writing the same test with Hamcrest is following.
+
+[source, java]
+----
+public class MultiConditions {
+  @Test
+  public void allOfMultiConditions() {
+    String firstName = "Gaius";
+    String lastName = "Caesar";
+    String helloMessage = composeHelloMessageInEnglish(firstName, lastName);
+    assertThat(helloMessage, allOf(
+        containsString("Hello"),
+        containsString("Gaius"),
+        containsString("CAESAR")));
+  }
+}
+----
+
+The output is like following and the situation became a bit better.
+
+[source]
+----
+java.lang.AssertionError:
+Expected: (a string containing "Hello" and a string containing "Gaius" and a string containing "CAESAR")
+but: a string containing "Hello" was "Howdy, Gaius Caesar!"
+----
+
+We have all the conditions in the output and the full actual input in the console.
+So, we should be able to examine all the conditions to be met (`a string containing "Hello"` and `a string containing "Gaius"` and `a string containing "CAESAR"`).
 
 == Next Post: Did the Hamcrest conclude how the assertion should be?
 
 Not, actually.
 Like any other products, Hamcrest has its own challenges.
 Like any other successful products, it made the next challenges visible.
-In relatively recent years, a few new assertion library are becoming popular.
-They are trying to become solutions to it.
+In relatively recent years, a few new assertion libraries are becoming popular.
+They are trying to address the challenges.
 `FluentJ` and `Google Truth`, which will be discussed in the next post.

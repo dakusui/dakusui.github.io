@@ -22,7 +22,7 @@ Therefore, it would be a useful example for illustrating that there are a lot of
 
 == Assertion in Automated Tests (JUnit)
 
-It is almost a quarter-century since Martin Fowler and Kent Beck have published the book "Refactoring"<<REFACTORING>> and the JUnit library has become popular.
+It is almost a quarter-century since Martin Fowler and Kent Beck have published the book "Refactoring"<<REFACTORING>> and the JUnit library became popular.
 The idea of an "assertion" was already there.
 It was implemented as a simple Java method `assert` in `TestCase` class, which a test writer should extend.
 Don't get surprised, the keyword `assert` used not to be a reserved word at the time.
@@ -64,7 +64,10 @@ class FileReaderTest extends TestCase {
 ----
 By using a new method `assertEquals`, without going back to the source code, we can now tell how the `_input` showed different behavior from the expectation on a failure.
 
-Since the software under test is a simple class which only reads a stream of characters from a file, it is not likely, but in general case, we should take the following situation into consideration.
+Since the software under test is a simple class which only reads a stream of characters from a file, the test was so easy.
+This is not likely in practical situations.
+
+In general case, we should take the following situation into consideration.
 We may introduce a bug that breaks all the assertions.
 We will fix (1), then run and find (2) is broken, and then run and find (3) is broken...
 
@@ -72,6 +75,7 @@ We can do even worse.
 Suppose we introduce a bug that breaks (3).
 We tried to fix it, but it actually broke (1).
 You can imagine how much it is frustrating.
+(Of course, it is a million times better than not having any tests, though)
 
 == Next Post
 
