@@ -65,7 +65,7 @@ but: a string containing "Hello" was "Howdy, Gaius Caesar!"
 ----
 
 We have all the conditions in the output and the full actual input in the console.
-So, we should be able to examine all the conditions to be met (`a string containing "Hello"` and `a string containing "Gaius"` and `a string containing "CAESAR"`).
+So, we should be able to examine all the conditions to be met (`a string containing "Hello"` and `a string containing "Gaius"` and `a string containing "CAESAR"`) at single run.
 
 == Next Post: Did the Hamcrest conclude how the assertion should be?
 
