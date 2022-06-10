@@ -1,0 +1,103 @@
+---
+title: "About Assertions−4"
+date: 2022-06-11T03:10:29+09:00
+draft: false
+---
+
+Hamcrest gave us a good failure report and a readable test code style.
+But, the latter was relying on a Java's language feature introduced in version 5.0, "static import".
+
+If we don't use it, the code will look like the following.
+
+[source, java]
+.Hamcrest Without "static import"
+----
+public class MultiConditions {
+  @Test
+  public void allOfMultiConditions() {
+    String firstName = "Gaius";
+    String lastName = "Caesar";
+    String helloMessage = composeHelloMessageInEnglish(firstName, lastName);
+    AllOf.assertThat(helloMessage, AllOf.allOf(
+        CoreMatchers.containsString("Hello"),
+        CoreMatchers.containsString("Gaius"),
+        CoreMatchers.containsString("CAESAR")));
+  }
+}
+----
+
+It doesn't look like that much readable.
+Another difficulty is that it is no that much "writable" for human.
+This point isn't mitigated by the static import.
+The key methods, `containsString`, `allOf`, and `assertThat` are scattered in the entire namespace of your classpath.
+You need to memorize the names of the static methods you want to use, more or less, even if your IDE helps you.
+Unfortunately, there are quite a lot.
+
+If you look into the source tree of the Hamcrest, perhaps you get scared by a troop of the classes<<HamcrestGithub>>.
+
+== The approach by Google Truth and AssertJ
+
+The most recent style of assertion libraries in Java as of 2022 is "fluent assertion style"footnote:[This is a term, I just coined to group them and not a widely accepted one.].
+
+[source, java]
+----
+public class AssertJExample {
+    public void assertJExampleFrodo() {
+        assertThat(frodo)
+          .isNotEqualTo(sauron)
+          .isIn(fellowshipOfTheRing);
+    }
+
+    public void assertJExampleFrodoName() {
+        assertThat(frodo.getName())
+          .startsWith("Fro")
+          .endsWith("do")
+          .isEqualToIgnoringCase("frodo");
+    }
+
+    public void assertJExampleFellowshipOfTheRing() {
+        assertThat(fellowshipOfTheRing)
+          .hasSize(9)
+          .contains(frodo, sam)
+          .doesNotContain(sauron);
+    }
+}
+----
+
+This is a snippet I created from the example I happened to find in <<BaeldungAssertJ>> and I edited to illustrate the concept.
+The method `assertThat` is the entry point you must memorize, but it shouldn't be difficult.
+
+As soon as you type the code to call the method for an object you are about to verify, you will see a pop-up from your IDE.
+
+.Code Completion by IDE
+image:../images/about-assertions-4_codecompletion.png[codecompletion]
+
+Based on the type of the value you give, the list of the methods are shown.
+Thus, unlike you do not need to worry, which methods can be used for your value.
+Only available ones are shown there.
+
+An output on a failure will be quite readable as Hamcrest.
+
+----
+org.opentest4j.AssertionFailedError:
+Expecting:
+ <Your name>
+to start with:
+ <Fro>
+but was not.
+----
+
+Style-wise, the same discussion is also valid for Google Truth <<GoogleTruthGithub>>, and I am not going to provide a full example for it, here.
+It is generally considered that it has a simpler API structure <<TruthVsAssertJ>>.
+
+== Next Post: Yet Open Problems
+
+In the area of assertion libraries, I still see open problems.
+In the next two post, I will discuss what are still challenges that are not addressed even by AssertJ and Google Truth.
+
+== References
+
+- [[HamcrestGithub]] https://github.com/hamcrest/JavaHamcrest/tree/master/hamcrest/src/main/java/org/hamcrest[Hamcrest Source Tree in Github]
+- [[BaeldungAssertJ]] https://www.baeldung.com/introduction-to-assertj[Introduction To AssertJ]
+- [[GoogleTruthGithub]] https://github.com/google/truth[Google Truth in Github]
+- [[TruthVsAssertJ]] https://truth.dev/comparison.html[Truth vs. AssertJ and Hamcrest]
