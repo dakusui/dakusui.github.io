@@ -70,7 +70,7 @@ The method `assertThat` is the entry point you must memorize, but it shouldn't b
 As soon as you type the code to call the method for an object you are about to verify, you will see a pop-up from your IDE.
 
 .Code Completion by IDE
-image:images/about-assertions-4_codecompletion.png[codecompletion]
+image:../images/about-assertions-4_codecompletion.png[codecompletion]
 
 Based on the type of the value you give, the list of the methods are shown.
 Thus, unlike you do not need to worry, which methods can be used for your value.
