@@ -1,0 +1,97 @@
+---
+title: "About Assertions 5"
+date: 2022-06-16T04:34:22+09:00
+draft: false
+---
+
+Google Truth and AssertJ delivered a new style of assertions, where you don't need to remember a lot of method names and class names placed in packages of Hamcrest's jar file.
+
+It made possible to rely on your IDE for listing available methods, from which you can choose a desired one, instead of relying on your memory for it.
+
+The only thing that you need to remember is the fact that the method `assertThat` is what you need.
+Once you type `assertThat(yourValue)`, your IDE will suggest to do static import <<Figure.1>>.
+
+[[Figure.1]]
+image:../images/about-assertions-5_codecompletion-1.png[IntelliJ suggest to do static import]
+
+And then, list methods that can be imported statically from your classpath<<Figure.2>>.
+
+[[Figure.2]]
+image:../images/about-assertions-5_codecompletion-2.png[IntelliJ suggests statically importable assertThat methods,,,role=right]
+
+To render these images, I used the code found at <<BaeldungAssertJ>>.
+
+== The Pain Points
+
+Please look at the method names and their packages a bit carefully.
+
+These are the custom supports available for the target class `Dog`.
+----
+PersonAssert.assertThat(com.baeldung.assertj.custom) <1>
+Assertions.assertThat(com.baeldung.assertj.custom) <2>
+UserSubject.assertThat(com.baeldung.assertj.custom) <3>
+----
+<1> Support for AssertJ
+<2> Support for Hamcrest
+<3> Support for Google Truth
+
+
+For instance, the class `PersonAssert` is implemented as follows.
+This code is cited from <<BaeldungAssertionTutorial>> and I've annotated.
+
+[source,java]
+----
+package com.baeldung.assertj.custom;
+
+import org.assertj.core.api.AbstractAssert;
+
+public class PersonAssert extends AbstractAssert<PersonAssert, Person> {
+
+    public PersonAssert(Person actual) {
+        super(actual, PersonAssert.class);
+    }
+
+    public static PersonAssert assertThat(Person actual) {
+        return new PersonAssert(actual);
+    }
+
+    public PersonAssert hasFullName(String fullName) {
+        isNotNull();
+        if (!actual.getFullName().equals(fullName)) {
+            failWithMessage("Expected person to have full name %s but was %s", fullName, actual.getFullName()); //<1>
+        }
+        return this;
+    }
+
+    public PersonAssert isAdult() {
+        isNotNull();
+        if (actual.getAge() < 18) {
+            failWithMessage("Expected person to be adult"); //<1>
+        }
+        return this;
+    }
+
+    public PersonAssert hasNickname(String nickName) {
+        isNotNull();
+        if (!actual.getNicknames().contains(nickName)) {
+            failWithMessage("Expected person to have nickname %s", nickName); //<1>
+        }
+        return this;
+    }
+}
+----
+<1> A message string that a human programmer needs to come up with.
+
+This is the first paint point in the "fluent" assertion style in these days, I'd point out.
+As annotated, you need to come up with a good message for each verification method.
+Another pain is the fact itself that we need to create a custom support class for your class every time.
+
+== Next Post: Yet another pain point (or others?)
+
+This time, I mentioned a couple of pain points of the modern fluent assertion style, but they are not all.
+In the next post, I will discuss yet another pain point, or two.
+
+== References
+
+- [[BaeldungAssertJ]] https://www.baeldung.com/introduction-to-assertj[Introduction To AssertJ]
+- [[BaeldungAssertionTutorial]] https://github.com/eugenp/tutorials/tree/master/testing-modules/assertion-libraries[assertion-libraries]
