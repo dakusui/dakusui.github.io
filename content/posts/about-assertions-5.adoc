@@ -37,7 +37,8 @@ UserSubject.assertThat(com.baeldung.assertj.custom) <3>
 
 
 For instance, the class `PersonAssert` is implemented as follows.
-This code is cited from <<BaeldungAssertionTutorial>> and I've annotated.
+This code is cited from <<BaeldungAssertionTutorial>> and I've annotated footnote:[So, is `Dog` a person?
+Please don't blame me.].
 
 [source,java]
 ----
