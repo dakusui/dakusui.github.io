@@ -1,0 +1,113 @@
+---
+title: "About Assertions 6"
+date: 2022-06-25T03:58:57+09:00
+draft: true
+---
+
+When testing, it is a situation that happens frequently, where you need to verify two values in a single test method.
+If those two values are irrelevant to each other, you should define two independent methods for them.
+However, in case we want to verify a certain relationship between them is satisfied or not, you can't do so.
+
+[source,java]
+.Multi-values Assertion in Hamcrest
+----
+public class Example {
+  @Test
+  public void example() {
+      String firstName = composeFirstName();
+      String fullName = composeFullName();
+
+      assertThat(firstName, isNotNull());
+      assertThat(fullName, allOf(
+          isNotNull(),
+          containsString(firstName)));
+  }
+}
+----
+
+This is an example method for Hamcrest.
+Once a bug is introduced, we will need to go back and forth between code and `stdout` (or log) to understand what is going on because the first `assertThat` may mask a verification result of the second `assertThat`.
+
+== Multi-values Assertion in AssertJ and Google Truth
+
+AssertJ (and Google Truth) has a mechanism to avoid this situation.
+
+Following is an example from the AssertJ's website <<AssertJ_softAssertions>>.
+
+[source, java]
+."Soft Assertion" example in AssertJ
+----
+public class Example {
+  public void host_dinner_party_where_nobody_dies() {
+    Mansion mansion = new Mansion();
+     mansion.hostPotentiallyMurderousDinnerParty();
+     // use SoftAssertions instead of direct assertThat methods
+    SoftAssertions softly = new SoftAssertions();
+    softly.assertThat(mansion.guests()).as("Living Guests").isEqualTo(7);
+    softly.assertThat(mansion.kitchen()).as("Kitchen").isEqualTo("clean");
+    softly.assertThat(mansion.library()).as("Library").isEqualTo("clean");
+    softly.assertThat(mansion.revolverAmmo()).as("Revolver Ammo").isEqualTo(6);
+    softly.assertThat(mansion.candlestick()).as("Candlestick").isEqualTo("pristine");
+    softly.assertThat(mansion.colonel()).as("Colonel").isEqualTo("well kempt");
+    softly.assertThat(mansion.professor()).as("Professor").isEqualTo("well kempt");
+    // Don't forget to call SoftAssertions global verification !
+    softly.assertAll();
+  }
+}
+----
+
+This will result in the following output.
+
+----
+org.assertj.core.api.SoftAssertionError:
+     The following 4 assertions failed:
+     1) [Living Guests] expected:<[7]> but was:<[6]>
+     2) [Library] expected:<'[clean]'> but was:<'[messy]'>
+     3) [Candlestick] expected:<'[pristine]'> but was:<'[bent]'>
+     4) [Professor] expected:<'[well kempt]'> but was:<'[bloodied and dishevelled]'>
+----
+
+This approach is not the best one because:
+
+- No uniformity with test methods doing checks for only one value.
+- The method `sofly.assertAll` may not be called.
+It can be easily overlooked in a pull request review. footnote:[AssertJ has a few ways to avoid having to call the `softly.assertAll`, however, their styles are all inconsistent with the "default" style of the AssertJ.]
+
+Google Truth also offers a completely different style from its "default" style as follows.
+
+[source, java]
+----
+public class Example {
+  @Rule public final Expect expect = Expect.create();
+
+  public void example() {
+    expect.that(results).containsExactly("hello");
+    expect.that(errors).isEmpty();
+  }
+}
+----
+
+== Summary and the Next Post
+
+We've walked through the history of (test) assertion libraries.
+Early versions of JUnit had a test base class with `assert` methods.
+Then, JUnit bundled the Hamcrest as the first assertion library footnote:[JUnit4, in JUnit5 it's not bundled anymore].
+Recent years, a newer generation of assertion libraries emerged, AssertJ and Google Truth.
+They help users write test code by providing "IDE-friendly" fluent API.
+The followings are design considerations, the assertion libraries have taken into account up to this point.
+
+- Readable failure messages
+- Avoid fail->fix->run loops
+- "Writability" of test codes
+
+
+However, there are still pain points in the new assertion libraries:
+
+- Support for user custom classes
+- Non-uniformed style for Multi-values assertions
+
+In the next few posts, I'll be introducing a new assertion library "pcond", which I developed to address all these concerns.
+
+== References
+
+[[AssertJ_softAssertions]] https://joel-costigliola.github.io/assertj/assertj-core-features-highlight.html#soft-assertions[AssertJ Core features highlight#Soft Assertions]
