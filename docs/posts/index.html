@@ -156,6 +156,32 @@
       
         
           <div class="post-card">
+  <a href="/posts/about-assertions-6/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg' alt="Hero Image">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">About Assertions 6</h5>
+        <p class="card-text post-summary">When testing, it is a situation that happens frequently, where you need to verify two values in a single test method. If those two values are irrelevant to each other, you should define two independent methods for them. However, in case we want to verify a certain relationship between them is satisfied or not, you can’t do so.
+ Multi-values Assertion in Hamcrest public class Example { @Test public void example() { String firstName = composeFirstName(); String fullName = composeFullName(); assertThat(firstName, isNotNull()); assertThat(fullName, allOf( isNotNull(), containsString(firstName))); } }   This is an example method for Hamcrest.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">June 25, 2022</span>
+        <a
+        href="/posts/about-assertions-6/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
+        
+      
+        
+          <div class="post-card">
   <a href="/posts/about-assertions-5/" class="post-card-link">
     <div class="card">
       <div class="card-head">

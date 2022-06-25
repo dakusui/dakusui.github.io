@@ -6,7 +6,17 @@
     <description>Recent content on Hiroshi Ukai&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 Jun 2022 04:34:22 +0900</lastBuildDate><atom:link href="https://dakusui.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+    <lastBuildDate>Sat, 25 Jun 2022 03:58:57 +0900</lastBuildDate><atom:link href="https://dakusui.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+      <title>About Assertions 6</title>
+      <link>https://dakusui.github.io/posts/about-assertions-6/</link>
+      <pubDate>Sat, 25 Jun 2022 03:58:57 +0900</pubDate>
+      
+      <guid>https://dakusui.github.io/posts/about-assertions-6/</guid>
+      <description>When testing, it is a situation that happens frequently, where you need to verify two values in a single test method. If those two values are irrelevant to each other, you should define two independent methods for them. However, in case we want to verify a certain relationship between them is satisfied or not, you can’t do so.
+ Multi-values Assertion in Hamcrest public class Example { @Test public void example() { String firstName = composeFirstName(); String fullName = composeFullName(); assertThat(firstName, isNotNull()); assertThat(fullName, allOf( isNotNull(), containsString(firstName))); } }   This is an example method for Hamcrest.</description>
+    </item>
+    
+    <item>
       <title>About Assertions 5</title>
       <link>https://dakusui.github.io/posts/about-assertions-5/</link>
       <pubDate>Thu, 16 Jun 2022 04:34:22 +0900</pubDate>

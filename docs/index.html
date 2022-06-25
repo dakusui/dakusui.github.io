@@ -847,6 +847,28 @@
     <div class="row" id="recent-post-cards">
       
         <div class="col-lg-4 col-md-6 pt-2 post-card">
+  <a href="/posts/about-assertions-6/" title="About Assertions 6" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/images/default-hero.jpg'
+          alt="Card image cap"
+        />
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">About Assertions 6</h5>
+        <p class="card-text post-summary"> When testing, it is a situation that happens frequently, where you need to verify two values in a single test method. If those two values are irrelevant to each other, you should define two independent methods for them. However, in case we want to verify a certain relationship between them is satisfied or not, you can’t do so.
+ Multi-values Assertion in Hamcrest public class Example { @Test public void example() { String firstName = composeFirstName(); String fullName = composeFullName(); assertThat(firstName, isNotNull()); assertThat(fullName, allOf( isNotNull(), containsString(firstName))); } }   This is an example method for Hamcrest.</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">June 25, 2022</span>
+        <a href="/posts/about-assertions-6/" title="Read" class="float-right btn btn-outline-info btn-sm">Read</a>
+      </div>
+    </div>
+  </a>
+</div>
+
+      
+        <div class="col-lg-4 col-md-6 pt-2 post-card">
   <a href="/posts/about-assertions-5/" title="About Assertions 5" class="post-card-link">
     <div class="card">
       <div class="card-head">
@@ -886,28 +908,6 @@
       <div class="card-footer">
         <span class="float-left">June 11, 2022</span>
         <a href="/posts/about-assertions-4/" title="Read" class="float-right btn btn-outline-info btn-sm">Read</a>
-      </div>
-    </div>
-  </a>
-</div>
-
-      
-        <div class="col-lg-4 col-md-6 pt-2 post-card">
-  <a href="/posts/about-assertions-3/" title="About Assertions−3" class="post-card-link">
-    <div class="card">
-      <div class="card-head">
-        <img class="card-img-top" src='/images/default-hero.jpg'
-          alt="Card image cap"
-        />
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">About Assertions−3</h5>
-        <p class="card-text post-summary"> I mentioned a situation, where we need to repeat fix, run, fix run…​ steps. It happens when we want to make sure multiple conditions are satisfied at the same time in a single test run.
- public class MultiConditions { @Test public void multiConditions() { String firstName = &#34;Gaius&#34;; String lastName = &#34;Caesar&#34;; String helloMessage = composeHelloMessageInEnglish(firstName, lastName); assertThat(helloMessage, containsString(&#34;Hello&#34;)); assertThat(helloMessage, containsString(&#34;Gaius&#34;)); assertThat(helloMessage, containsString(&#34;CAESAR&#34;)); } }   Let’s suppose that we introduced bugs in the method composeHelloMessageInEnglish(String,String), where we inserted &#34;Howdy&#34;, instead of &#34;Hello&#34; and at the same time, we forgot making family name all upper cases despite its specification of the function.</p>
-      </div>
-      <div class="card-footer">
-        <span class="float-left">June 3, 2022</span>
-        <a href="/posts/about-assertions-3/" title="Read" class="float-right btn btn-outline-info btn-sm">Read</a>
       </div>
     </div>
   </a>
